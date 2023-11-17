@@ -41,6 +41,7 @@ public class FCFS implements Algorithm
         Process p = processesToSchedule.remove();
         if (CPU.getCurrentTime() < p.getArrivalTime()) {
             CPU.advanceTimeTo(p.getArrivalTime());
+            System.out.println("we wanna know ," + CPU.getCurrentTime() + "\t"+ p.getArrivalTime()+ "\n");
         }
         readyQueue.add(p);
 
@@ -63,12 +64,12 @@ public class FCFS implements Algorithm
 
             while (!processesToSchedule.isEmpty()){
                 p = processesToSchedule.peek();
-                 if (p.getArrivalTime() <= CPU.getCurrentTime()) {
+                if (p.getArrivalTime() <= CPU.getCurrentTime()) {
                      /**
                       * process p has already arrived
                       */
                      readyQueue.add(processesToSchedule.remove());
-                 }else{
+                }else{
                      /**
                       * Process p arrives in the future.
                       * If the ready queue is empty, advance the simulation clock so that p will arrive;
